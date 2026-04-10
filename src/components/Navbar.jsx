@@ -11,7 +11,7 @@ const Navbar = () => {
         </div>
       </NavLink>
       <NavLink to="/create">
-        <button className='bg-[#008c75] rounded-md py-[6px] px-3'>
+        <button className='bg-[#008c75] rounded-md py-[6px] px-3 cursor-pointer'>
           + New Article
         </button>
       </NavLink>

@@ -21,7 +21,11 @@ const BlogForm = ({ editBlog }) => {
     if (editBlog) {
       handleUpdate({ ...editBlog, ...data });
     } else {
-      setBlogs(prevBlogs => [...prevBlogs, { ...data, id: nanoid() }]);
+      setBlogs(prevBlogs => [...prevBlogs, {
+        ...data,
+        id: nanoid(),
+        createdAt: new Date().toISOString()
+      }]);
     }
     reset();
     navigate("/");
@@ -56,7 +60,7 @@ const BlogForm = ({ editBlog }) => {
 
           {errors.content && <p className='text-red-500'>{errors.content.message}</p>}
 
-          <button disabled={editBlog ? false : !isValid} type='submit' className={` ${editBlog ? "disabled:opacity-100 disabled:cursor-allowed" : "disabled:opacity-50 disabled:cursor-not-allowed"} bg-[#008c75] rounded-md py-2 w-[100px]`}>
+          <button disabled={editBlog ? false : !isValid} type='submit' className={` ${editBlog ? "disabled:opacity-100 disabled:cursor-allowed" : "disabled:opacity-50 disabled:cursor-not-allowed"} bg-[#008c75] rounded-md py-2 w-[100px] cursor-pointer`}>
             {editBlog ? "Update" : "Publish"}
           </button>
         </form>
